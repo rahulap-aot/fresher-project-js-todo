@@ -1,13 +1,3 @@
-function showtask() {
-    document.getElementsByClassName('add-task')[0].style.display = 'block';
-    document.getElementById('main-body').style.opacity = 0.3;
-}
-
-function hidetask() {
-    document.getElementsByClassName('add-task')[0].style.display = 'none';
-    document.getElementById('main-body').style.opacity = 1;
-}
-
 let mydata = JSON.parse(localStorage.getItem('mydata')) || [];
 
 const tasklist = document.getElementById('task-list');
@@ -28,16 +18,6 @@ function savetask() {
     }
 }
 
-function showtask1() {
-    document.getElementsByClassName('delete1')[0].style.display = 'block';
-    document.getElementById('main-body').style.opacity = 0.3;
-}
-
-function hidetask1() {
-    document.getElementsByClassName('delete1')[0].style.display = 'none';
-    document.getElementById('main-body').style.opacity = 1;
-}
-
 function deletetask(i) {
     del.innerHTML = `<div class="task-delete">
             <p class="task-delete-heading">Delete Task</p>
@@ -48,15 +28,6 @@ function deletetask(i) {
             </div>
             </div>`;
 }
-
-$(document).ready(function () {
-    $('body').on('change', '.custom-checkbox', function () {
-        var i = $(this).data('index');
-        mydata[i].completed_task = !mydata[i].completed_task;
-        updateLocalStorage();
-        displaytask();
-    });
-});
 
 function permitdelete(index) {
     mydata.splice(index, 1);
@@ -97,8 +68,7 @@ function createTaskElement(task, index) {
     div.innerHTML = `
         <div class="inner-taskspace">
             <div class="custom-checkbox-container">
-                <input type="checkbox" id="customCheckbox${index}" class="custom-checkbox" data-index="${index}" ${task.completed_task ? 'checked' : ''}>
-                <label for="customCheckbox${index}" class="custom-checkbox-label"></label>
+                <img src="${task.completed_task ? 'images/tik.svg' : 'images/untik.svg'}" class="custom-checkbox" data-index="${index}" onclick="toggleTask(${index})">
             </div>
             <div class="task-card">
                 <div class="task-header">
@@ -107,14 +77,14 @@ function createTaskElement(task, index) {
                         <span class="${task.completed_task ? 'span-green' : 'span-yellow'}"></span>
                     </div>
                     <div class="edit-delete">
-                        <img class="edit-icon" src="images/Group 817.svg" onclick="updatetask(${index}); showtask();">
+                        <img class="edit-icon" src="images/edit.svg" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" onclick="updatetask(${index});">
                         <img class="delete-icon" onclick="deletetask(${index}); showtask1();" src="images/Group.svg">
                     </div>
                 </div>
                 <p class="task-paragraph">${task.description}</p>
                 <div class="${isPastDue ? 'past-due' : 'col-date'}">
                     <img class="col-img" src="${isPastDue ? 'images/colondered.svg' : 'images/calendar_month_black_24dp 2.svg'}">
-                    <p class="by-date">by ${task.date}</p>
+                    <p class="${isPastDue ? 'by-date2' : 'by-date1'}">by ${task.date}</p>
                 </div>
             </div>
         </div>
@@ -122,34 +92,44 @@ function createTaskElement(task, index) {
     return div;
 }
 
+function toggleTask(index) {
+    mydata[index].completed_task = !mydata[index].completed_task;
+    updateLocalStorage();
+    displaytask();
+}
+
 function updatetask(index) {
     let task = mydata[index];
     update.innerHTML = `
-    <div class="add-task">
-        <div class="add-task-head">
-            <p class="add-task-heading">Add Task</p>
-            <img class="close-icon" src="images/x.svg" onclick="hidetask()">
-        </div>
-        <hr>
-        <div class="add-task-content">
-            <div class="add-task-content-title">
-                <p class="add-task-content-heading">Title *</p>
-                <input type="text" class="add-task-content-head" id="head" value="${task.head}">
-            </div>
-            <div class="add-task-content-description">
-                <p class="add-task-content-description1">Description</p>
-                <input type="text" class="add-task-content-testarea" id="description" value="${task.description}">
-            </div>
-            <div class="add-task-content-date">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
+            <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Title *</label>
+                <input type="text" class="form-control" id="head" value="${task.head}">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Description</label>
+                <textarea class="form-control" id="description">${task.description}</textarea>
+              </div>
+              <div class="add-task-content-date">
                 <p class="add-task-content-date1">Date</p>
                 <input type="date" id="date" class="add-task-content-date-input" value="${task.date}">
-            </div>
-            <hr>
-            <div class="add-task-footer">
-                <button type="button" class="btn1 btn-primary btn-sm" onclick="hidetask()">Cancel</button>
-                <button type="button" class="btn2 btn-primary btn-sm" onclick="updatesave(${index})">Save</button>
-            </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="updatesave(${index})">Save</button>
+          </div>
         </div>
+      </div>
     </div>
     `;
 }
@@ -161,7 +141,6 @@ function updatesave(index) {
     mydata[index] = { ...mydata[index], head, description, date };
     localStorage.setItem('mydata', JSON.stringify(mydata));
     window.location.reload();
-    hidetask();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -191,7 +170,6 @@ function displayFilteredTasks(tasks) {
 
 document.getElementById('search-bar').addEventListener('input', searchTasks);
 
-
 function sortTasks() {
     const sortOption = document.getElementById('sort-tasks').value;
 
@@ -210,8 +188,13 @@ function sortTasks() {
     displaytask();
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     sortTasks();
     displaytask();
 });
+
+function clearCompletedTasks() {
+    mydata = mydata.filter(task => !task.completed_task);
+    updateLocalStorage();
+    displaytask();
+}

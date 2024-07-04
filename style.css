@@ -8,21 +8,21 @@
   flex-direction: column;
   gap: 32px;
 }
-.main-body .navbar {
+.navbar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.main-body .navbar .navbar-heading {
-  font-family: montserrat;
+.navbar-heading {
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 24;
   line-height: 32px;
   margin: 0%;
 }
-.main-body .navbar .btn-primary {
-  font-family: montserrat;
+.btn-primary {
+  font-family: "Montserrat", sans-serif;
   background-color: #0C39C7;
   width: 143px;
   height: 40px;
@@ -38,13 +38,13 @@
   background-color: #D0D5DD;
   margin: 0%;
 }
-.main-body .main-search {
+.main-search {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.main-body .main-search .search-bar {
+.search-bar {
   width: 578px;
   border-radius: 8px;
   border: 1px solid;
@@ -53,7 +53,7 @@
   justify-content: center;
   grid-template-columns: 1fr 44px;
 }
-.main-body .main-search .search-bar .form-control {
+.form-control {
   padding: 0%;
   border: 0px;
   height: auto;
@@ -62,56 +62,56 @@
   line-height: 24px;
   color: #495057;
 }
-.main-body .main-search .search-bar img {
+.search-bar img {
   margin: 12px;
 }
-.main-body .main-search .dropdown-area {
+.dropdown-area {
   max-width: 223px;
   display: flex;
 }
-.main-body .main-search .dropdown-area .sort-by {
+.sort-by {
   align-self: center;
   width: 59px;
-  font-family: montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 17.07px;
   margin: 0%;
 }
-.main-body .added-main {
+.added-main {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.main-body .added-main .task_heading {
+.task_heading {
   width: 300px;
   height: 22px;
-  font-family: montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 21.94px;
   margin: 0%;
 }
-.main-body .added-main .task_listing-page {
+.task_listing-page {
   display: flex;
   flex-direction: column;
   gap: 21px;
 }
-.main-body .added-main .task_listing-page .task-x {
+.task-x {
   border-radius: 8px;
   border: 1px solid;
   justify-content: space-between;
   padding: 24px;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace {
+.inner-taskspace {
   display: grid;
   grid-template-columns: 46px 1fr;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .custom-checkbox-container .custom-checkbox {
+.custom-checkbox {
   display: block;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .task-card {
+.task-card {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -119,66 +119,71 @@
   justify-content: center;
   gap: 12px;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .task-card .task-header {
+.task-header {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .task-card .task-header .name-tik {
+.form-control{
+  border: none !important;
+}
+.name-tik {
   max-width: 280px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .task-card .task-header .name-tik .task-name {
-  font-family: montserrat;
+.task-name {
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 21.94px;
   margin: 0%;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .task-card .task-header .name-tik .span-green {
+.span-green {
   background-color: #05eb4a;
   width: 11px;
   height: 11px;
   border-radius: 50%;
+  margin-left: 3px;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .task-card .task-header .name-tik .span-yellow {
+.span-yellow {
   width: 11px;
   height: 11px;
   border-radius: 50%;
   background-color: #EBB705;
+  margin-left: 3px;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .task-card .task-header .edit-delete {
+.edit-delete {
   width: 68px;
   height: 28px;
   display: flex;
   justify-content: space-between;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .task-paragraph {
-  font-family: montserrat;
+.task-paragraph {
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   margin: 0%;
   color: #475467;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .col-date {
+.col-date {
   max-width: 137px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .col-date .by-date {
-  font-family: montserrat;
+.by-date1 {
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 17.07px;
   margin: 0%;
   color: #667085;
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .past-due {
+.past-due {
   max-width: 137px;
   height: 24px;
   display: flex;
@@ -186,130 +191,36 @@
   justify-content: space-between;
   background-color: rgba(192, 53, 3, 0.0588235294);
 }
-.main-body .added-main .task_listing-page .task-x .inner-taskspace .past-due .by-date {
-  font-family: montserrat;
+.by-date2 {
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 17.07px;
   margin: 0%;
   color: #C03503;
 }
-.main-body .complete-main {
+.complete-main {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.main-body .complete-main .task_heading {
+.task_heading {
   width: 300px;
   height: 22px;
-  font-family: montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 21.94px;
   margin: 0%;
 }
-.main-body .complete-main .complete_listing-page {
+.complete_listing-page {
   display: flex;
   flex-direction: column;
   gap: 21px;
 }
-.main-body .complete-main .complete_listing-page .task-x {
-  border-radius: 8px;
-  border: 1px solid;
-  justify-content: space-between;
-  padding: 24px;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace {
-  display: grid;
-  grid-template-columns: 46px 1fr;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .custom-checkbox-container .custom-checkbox {
-  display: block;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .task-card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  gap: 12px;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .task-card .task-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .task-card .task-header .name-tik {
-  max-width: 280px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .task-card .task-header .name-tik .task-name {
-  font-family: montserrat;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 21.94px;
-  margin: 0%;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .task-card .task-header .name-tik .span-green {
-  background-color: #05eb4a;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .task-card .task-header .name-tik .span-yellow {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background-color: #EBB705;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .task-card .task-header .edit-delete {
-  width: 68px;
-  height: 28px;
-  display: flex;
-  justify-content: space-between;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .task-paragraph {
-  font-family: montserrat;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  margin: 0%;
-  color: #475467;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .col-date {
-  max-width: 137px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .col-date .by-date {
-  font-family: montserrat;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 17.07px;
-  margin: 0%;
-  color: #667085;
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .past-due {
-  max-width: 137px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(192, 53, 3, 0.0588235294);
-}
-.main-body .complete-main .complete_listing-page .task-x .inner-taskspace .past-due .by-date {
-  font-family: montserrat;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 17.07px;
-  margin: 0%;
-  color: #C03503;
-}
+
+
 
 .add-task {
   margin-left: 409px;
@@ -325,15 +236,15 @@
   background-color: white;
   z-index: 10;
 }
-.add-task .add-task-head {
+.add-task-head {
   width: 100%;
   height: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.add-task .add-task-head .add-task-heading {
-  font-family: montserrat;
+.add-task-heading {
+  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 24.38px;
@@ -346,29 +257,29 @@
   background-color: #D0D5DD;
   margin: 0%;
 }
-.add-task .add-task-content {
+.add-task-content {
   width: 576px;
   height: 431px;
   gap: 24px;
   display: flex;
   flex-direction: column;
 }
-.add-task .add-task-content .add-task-content-title {
+.add-task-content-title {
   width: 576px;
   height: 71px;
   gap: 6px;
   display: flex;
   flex-direction: column;
 }
-.add-task .add-task-content .add-task-content-title .add-task-content-heading {
-  font-family: montserrat;
+.add-task-content-heading {
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.5px;
   margin: 0%;
   color: #282829;
 }
-.add-task .add-task-content .add-task-content-title .add-task-content-head {
+.add-task-content-head {
   width: 576px;
   height: 45px;
   border-radius: 8px;
@@ -376,22 +287,22 @@
   padding: 14px 16px;
   background-color: #D0D5DD;
 }
-.add-task .add-task-content .add-task-content-description {
+.add-task-content-description {
   width: 576px;
   height: 134px;
   gap: 6px;
   display: flex;
   flex-direction: column;
 }
-.add-task .add-task-content .add-task-content-description .add-task-content-description1 {
-  font-family: montserrat;
+.add-task-content-description1 {
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.5px;
   margin: 0%;
   color: #282829;
 }
-.add-task .add-task-content .add-task-content-description .add-task-content-testarea {
+.add-task-content-testarea {
   width: 576px;
   height: 108px;
   border-radius: 8px;
@@ -399,63 +310,61 @@
   padding: 14px 16px;
   background-color: #D0D5DD;
 }
-.add-task .add-task-content .add-task-content-date {
-  width: 576px;
+.add-task-content-date {
+  width: 100%;
   height: 78px;
   gap: 6px;
   display: flex;
   flex-direction: column;
 }
-.add-task .add-task-content .add-task-content-date .add-task-content-date1 {
-  font-family: montserrat;
+.add-task-content-date1 {
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.5px;
   margin: 0%;
-  color: #282829;
 }
-.add-task .add-task-content .add-task-content-date .add-task-content-date-input {
-  width: 576px;
+.add-task-content-date-input {
   height: 52px;
   border-radius: 8px;
   border: 1px solid;
   padding: 14px 16px;
-  background-color: #D0D5DD;
+  background-color: white;
 }
-.add-task .add-task-content hr {
+.add-task-content hr {
   width: 100%;
   border: 1px solid;
   background-color: #D0D5DD;
   margin: 0%;
 }
-.add-task .add-task-content .add-task-footer {
+.add-task-footer {
   width: 576px;
   height: 78px;
   gap: 6px;
   display: flex;
   justify-content: end;
 }
-.add-task .add-task-content .add-task-footer .btn1 {
+.btn1 {
   width: 96px;
   height: 40px;
   border-radius: 8px;
   border: 1px solid;
   padding: 10px 20px;
   background-color: #FFFFFF;
-  font-family: montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 19.5px;
   border-color: #D0D5DD;
 }
-.add-task .add-task-content .add-task-footer .btn2 {
+.btn2 {
   width: 96px;
   height: 40px;
   border-radius: 8px;
   border: 1px solid;
   padding: 10px 20px;
   background-color: #0C39C7;
-  font-family: montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 19.5px;
@@ -470,11 +379,11 @@
   border-radius: 12px;
   border: 1px solid;
   position: absolute;
-  background-color: white;
+  font-family: "Montserrat", sans-serif;
   display: none;
   z-index: 10;
 }
-.delete1 .task-delete {
+.task-delete {
   width: 654px;
   height: 237px;
   border-radius: 12px;
@@ -486,50 +395,65 @@
   align-items: center;
   background-color: white;
 }
-.delete1 .task-delete .task-delete-head {
-  font-family: montserrat;
+.task-delete-head {
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 21.94px;
   margin: 0%;
 }
-.delete1 .task-delete .task-delete-content-heading {
-  font-family: montserrat;
+.task-delete-content-heading {
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 19.5px;
   margin: 0%;
 }
-.delete1 .task-delete .task-delete-footer {
+.task-delete-footer {
   width: 574px;
   height: 40px;
   display: flex;
   justify-content: center;
   gap: 12px;
 }
-.delete1 .task-delete .task-delete-footer .btn11 {
+.head-displaycompleted{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:40px;
+  align-items: center;
+}
+.btn11 {
   width: 96px;
   height: 40px;
   border-radius: 8px;
   border: 1px solid;
   padding: 10px 20px;
   background-color: #FFFFFF;
-  font-family: montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 19.5px;
   border-color: #D0D5DD;
 }
-.delete1 .task-delete .task-delete-footer .btn21 {
+.btn21 {
   width: 96px;
   height: 40px;
   border-radius: 8px;
   border: 1px solid;
   padding: 10px 20px;
   background-color: #C0070B;
-  font-family: montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 19.5px;
   color: white;
-}/*# sourceMappingURL=style.css.map */
+}
+.sort-tasks{
+  width: 156px;
+  height: 44px;
+}
+
+
+
+/*# sourceMappingURL=style.css.map */
