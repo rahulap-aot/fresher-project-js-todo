@@ -105,7 +105,7 @@ function updatetask(index) {
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Task</h1>
             <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -115,18 +115,18 @@ function updatetask(index) {
                 <input type="text" class="form-control" id="head" value="${task.head}">
               </div>
               <div class="mb-3">
-                <label for="message-text" class="col-form-label">Description</label>
+                <label for="message-text" class="col-form-label">Description <img src="/images/Vector (1).svg"></label>
                 <textarea class="form-control" id="description">${task.description}</textarea>
               </div>
               <div class="add-task-content-date">
-                <p class="add-task-content-date1">Date</p>
+                <p class="add-task-content-date1">Due date</p>
                 <input type="date" id="date" class="add-task-content-date-input" value="${task.date}">
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" onclick="updatesave(${index})">Save</button>
+            <button type="button" class="btn btn-primary" onclick="updatesave(${index})">Update</button>
           </div>
         </div>
       </div>
