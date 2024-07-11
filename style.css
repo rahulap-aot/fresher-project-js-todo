@@ -212,18 +212,26 @@ p {
   line-height: 20px;
   color: #475467;
 }
-.col-date {
+.col-date, .col-date2{
   max-width: 137px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.by-date1 {
+.col-date2{
+  background-color: #C035030F;
+}
+
+.by-date1, .by-date2{
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 14px;
   color: #667085;
+  width: 105px;
+}
+.by-date2{
+color: #C03503;
 }
 
 /* Complete main */

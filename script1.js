@@ -5,6 +5,7 @@ let mydata=JSON.parse(localStorage.getItem('mydata')) || [];
  let active=document.querySelector('#task-list');
  let completed=document.querySelector('#task-complete');
  let update=document.querySelector('#update');
+ let del=document.querySelector('#delete1');
 
 
 function savetask(){
@@ -16,15 +17,19 @@ function savetask(){
         let task={head,description,date,completed_task};
         mydata.push(task);
         localStorage.setItem('mydata',JSON.stringify(mydata)); //mydata sending to local storage
-        displaytask();      
+        displaytask();     
+        
+        document.getElementById('head').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('date').value = '';
     }
 }
 
-function displaytask(){
+function displaytask(filteredTasks =mydata){
     active.innerHTML='';
     completed.innerHTML='';
 
-    mydata.forEach((task,i)=>{
+    filteredTasks.forEach((task,i)=>{
         if(task.completed_task){
             let newtask=taskElement(task,i);
             completed.appendChild(newtask);
@@ -40,6 +45,10 @@ function taskElement(task, i){
     let div = document.createElement('div');
     div.className = "task-x";
 
+    const today = new Date();
+    const taskDate = new Date(task.date);
+    const isPastDue = taskDate < today;
+
     div.innerHTML = `
     <div class="inner-taskspace">
         <div class="custom-checkbox-container">
@@ -54,13 +63,13 @@ function taskElement(task, i){
                 </div>
                 <div class="edit-delete">
                     <img class="edit-icon" onClick="Editmodal(${i})" data-bs-toggle="modal" data-bs-target="#exampleModa2" data-bs-whatever="@getbootstrap" src="images/edit.svg">
-                    <img class="delete-icon" data-bs-toggle="modal" data-bs-target="#exampleModal3" deletemodal(${i}) src="images/Group.svg">
+                    <img class="delete-icon" onClick="deletemodal(${i})" src="images/Group.svg">
                 </div>
             </div>
             <p class="task-paragraph">${task.description}</p>
-            <div class="col-date">
-                <img class="col-img" src="images/calendar_month_black_24dp 2.svg">
-                <p class="by-date1">by ${task.date}</p>
+            <div class=${isPastDue? "col-date2" : "col-date"}>
+                <img class="col-img" src=${isPastDue? "/images/colondered.svg" : "/images/col1.svg"}>
+                <p class=${isPastDue? "by-date2" : "by-date1"}>by ${task.date}</p>
             </div>
         </div>
     </div>
@@ -71,7 +80,7 @@ function taskElement(task, i){
 function completeTask(i){
     mydata[i].completed_task = !mydata[i].completed_task;
     localStorage.setItem('mydata',JSON.stringify(mydata));
-    displaytask();
+    sortTasks()
 }
 
 function Editmodal(i) {
@@ -104,7 +113,7 @@ function Editmodal(i) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn1 btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn2 btn-primary" onclick="Updatetask(${i})">Save Task</button>
+                    <button type="button" class="btn2 btn-primary" data-bs-dismiss="modal" onclick="Updatetask(${i})">Save Task</button>
                 </div>
             </div>
         </div>
@@ -124,44 +133,71 @@ function Updatetask(i){
     task.description = description;
     task.date = date;
     localStorage.setItem('mydata',JSON.stringify(mydata));
-    displaytask();
-}
-
-function deletemodal(i){
-    update.innerHTML=`
-    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="delete-x">
-            <img data-bs-dismiss="modal" src="/images/x.svg">
-        </div>
-        <div class="task-delete-body">
-        <p class="task-delete-heading">Delete Task?</p>
-            <p class="task-delete-content-heading">Are you sure you want to delete this task?</p>
-            <div class="task-delete-footer">
-                <button type="button" class="btn11" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" onClick="deletetask(${i})"  class="btn21">Delete</button>
-            </div>
-        </div>
-    </div>
-    </div>
-  </div>`
+    sortTasks()
 }
 
 function deletetask(i){
     console.log(mydata[i])
     mydata.splice(i,1);
     localStorage.setItem('mydata',JSON.stringify(mydata));
-    displaytask();
+    sortTasks()
 }
 
+function deletemodal(i){
+    del.innerHTML = '';
+
+    del.innerHTML = `
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="delete-x">
+                    <img data-bs-dismiss="modal" src="/images/x.svg">
+                </div>
+                <div class="task-delete-body">
+                    <p class="task-delete-heading">Delete Task?</p>
+                    <p class="task-delete-content-heading">Are you sure you want to delete this task?</p>
+                    <div class="task-delete-footer">
+                        <button type="button" class="btn11" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" onClick="deletetask(${i})" data-bs-dismiss="modal" class="btn21">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`
+    var exampleModal3 = new bootstrap.Modal(document.getElementById('exampleModal3'));
+    exampleModal3.show();
+}
 
 
 function clearCompletedTasks(){
     mydata = mydata.filter(task => !task.completed_task);
     localStorage.setItem('mydata',JSON.stringify(mydata));
-    displaytask();
+    sortTasks()
+}
+
+function searchTasks(){
+    const term=document.getElementById('search-bar').value.toLowerCase();
+    const filteredTasks = mydata.filter(task => task.head.toLowerCase().includes(term));
+    displaytask(filteredTasks);
+} 
+
+function sortTasks() {
+    const sortOrder = document.getElementById('sort-tasks').value;
+    let sortedTasks = [...mydata]; 
+
+    sortedTasks.sort((a, b) => {
+        let dateA = new Date(a.date);
+        let dateB = new Date(b.date);
+
+        if (sortOrder === 'date-asc') {
+            return dateA - dateB;
+        } else {
+            return dateB - dateA;
+        }
+    });
+
+    displaytask(sortedTasks);
 }
 
 
-displaytask()
+sortTasks()
